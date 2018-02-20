@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书</title>
+</head>
+<body>
+<a href="/create">创建</a>
+<ul>
+    {% for book in boolist %}
+        <li><a href="{{ book.id }}">{{ book.btitle }}</a><a href="/delete/{{ book.id }}">--删除</a></li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
