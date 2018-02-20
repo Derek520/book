@@ -10,6 +10,8 @@ def index(request):
     booklist = BookInfo.objects.filter(is_delete=False)
     # 组织上下文
     context = {'boolist':booklist}
+
+    request.session['hello']='abc'
     # 返回数据
     return render(request,'my_book/index.html',context)
 
