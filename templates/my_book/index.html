@@ -3,18 +3,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>图书</title>
+    {% block title %}
+        <title>图书</title>
+    {% endblock %}
 </head>
 <body>
-<a href="/create">创建</a>
-<ul>
-    {% for book in boolist %}
-        {% if book.id|mod %}
-            <li style="background-color: red"><a href="{{ book.id }}">{{ book.btitle }}</a><a href="/delete/{{ book.id }}">--删除</a></li>
-        {% else %}
-            <li><a href="{{ book.id }}">{{ book.btitle }}</a><a href="/delete/{{ book.id }}">--删除</a></li>
-        {% endif %}
-    {% endfor %}
-</ul>
+{% block top %}
+
+{% endblock %}
+{% block context %}
+    <a href="/create">创建</a>
+    <ul>
+        {% for book in boolist %}
+            {% if book.id|mod %}
+                <li style="background-color: red"><a href="{{ book.id }}">{{ book.btitle }}</a><a href="/delete/{{ book.id }}">--删除</a></li>
+            {% else %}
+                <li><a href="{{ book.id }}">{{ book.btitle }}</a><a href="/delete/{{ book.id }}">--删除</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}
+{% block butm %}
+
+{% endblock %}
 </body>
 </html>

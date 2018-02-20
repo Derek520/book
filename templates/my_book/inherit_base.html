@@ -1,0 +1,15 @@
+{% extends 'my_book/index.html' %}
+{#继承模板#}
+{% block title %}
+    <title>继承模板</title>
+{% endblock %}
+{% block top %}
+    <h2>继承</h2>
+{% endblock %}
+{% block context %}
+    {{ block.super }}
+{% endblock %}
+{% block butm %}
+    <h2>结尾</h2>
+{% endblock %}
+
