@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.shortcuts import render,redirect,HttpResponse
+from django.core.urlresolvers import reverse
 from .models import BookInfo,HeroInfo
 # Create your views here.
 from PIL import Image, ImageDraw, ImageFont
@@ -101,3 +102,32 @@ def verify_code(request):
     im.save(buf, 'png')
     #将内存中的图片数据返回给客户端，MIME类型为图片png
     return HttpResponse(buf.getvalue(), 'image/png')
+
+# 调用验证码
+def verify_show(request):
+    '''调用验证码'''
+    return render(request,'my_book/verify_show.html')
+
+# 验证码验证
+def verify_yz(request):
+    '''验证验证码'''
+    yzm = request.POST.get('yzm')
+    verifycode = request.session['verifycode']
+    if yzm != verifycode:
+        return HttpResponse('no')
+    return HttpResponse(yzm)
+
+# 反向解析
+def fan1(request):
+    return render(request,'my_book/fan1.html')
+def fan2(request):
+    '''视图中重定向反向解析'''
+    return redirect(reverse('my_book:fan2', args=(2, 3)))
+
+def fan3(request,a,b):
+    '''位置参数'''
+    return HttpResponse(a+b)
+
+def fan4(request, id, age):
+    '''带关键字参数'''
+    return HttpResponse(id+age)
